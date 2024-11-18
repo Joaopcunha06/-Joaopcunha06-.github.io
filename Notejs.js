@@ -25,7 +25,7 @@ const lerArquivo = (caminho) => {
   });
 };
 
-// Função para processar as linhas e calcular os resultados
+
 const processarLinhas = (linhas) => {
   let somaNumeros = 0;
   let linhasComTexto = 0;
@@ -34,13 +34,12 @@ const processarLinhas = (linhas) => {
   linhas.forEach((linha) => {
     const linhaTratada = linha.trim();
     
-    // Se a linha contém apenas números
+   
     if (/^\d+$/.test(linhaTratada)) {
       somaNumeros += parseInt(linhaTratada, 10);
       linhasComNumeros++;
     } else if (linhaTratada) {
-      // Se a linha contém texto (mesmo que tenha números misturados)
-      linhasComTexto++;
+     
     }
   });
 
@@ -50,7 +49,7 @@ const processarLinhas = (linhas) => {
   };
 };
 
-// Função para exibir o resumo
+/
 const exibirResumo = (resultado, tempoInicial) => {
   const tempoFinal = new Date().getTime();
   const tempoExecucao = (tempoFinal - tempoInicial) / 1000;
@@ -61,10 +60,10 @@ const exibirResumo = (resultado, tempoInicial) => {
   console.log(`- Tempo de execução: ${tempoExecucao.toFixed(2)} segundos`);
 };
 
-// Função principal para executar a aplicação
+
 const executarAplicacao = async () => {
   try {
-    // Pedir o caminho do arquivo ao usuário
+  
     const caminhoArquivo = await pedirCaminhoArquivo();
     
     const tempoInicial = new Date().getTime(); // Marca o tempo inicial
@@ -75,7 +74,7 @@ const executarAplicacao = async () => {
 
     exibirResumo(resultado, tempoInicial);
 
-    // Perguntar se o usuário deseja executar novamente
+   
     rl.question('\nDeseja executar novamente? (s/n): ', (resposta) => {
       if (resposta.toLowerCase() === 's') {
         executarAplicacao(); // Se 'sim', reinicia a aplicação
@@ -90,5 +89,5 @@ const executarAplicacao = async () => {
   }
 };
 
-// Iniciar a aplicação
+
 executarAplicacao();
