@@ -2,13 +2,10 @@
 const fs = require('fs');
 const readline = require('readline');
 
-// Criar interface de leitura para interagir com o usuário
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
-});
-
-// Função para pedir o caminho do arquivo
+})
 const pedirCaminhoArquivo = () => {
   return new Promise((resolve) => {
     rl.question('Por favor, insira o caminho do arquivo .txt: ', (caminho) => {
@@ -16,15 +13,13 @@ const pedirCaminhoArquivo = () => {
     });
   });
 };
-
-// Função para ler o arquivo de forma assíncrona
 const lerArquivo = (caminho) => {
   return new Promise((resolve, reject) => {
     fs.readFile(caminho, 'utf8', (err, dados) => {
       if (err) {
         reject('Erro ao ler o arquivo: ' + err.message);
       } else {
-        resolve(dados.split('\n')); // Divide o conteúdo do arquivo em linhas
+        resolve(dados.split('\n')); 
       }
     });
   });
@@ -74,13 +69,10 @@ const executarAplicacao = async () => {
     
     const tempoInicial = new Date().getTime(); // Marca o tempo inicial
 
-    // Ler o arquivo de forma assíncrona
     const linhas = await lerArquivo(caminhoArquivo);
 
-    // Processar as linhas do arquivo
     const resultado = processarLinhas(linhas);
 
-    // Exibir o resumo
     exibirResumo(resultado, tempoInicial);
 
     // Perguntar se o usuário deseja executar novamente
